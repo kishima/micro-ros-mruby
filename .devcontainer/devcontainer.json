@@ -1,0 +1,10 @@
+{
+  "name": "micro-ros-mruby-dev-container",
+  "image": "espressif/idf:v5.4.1:v5.4.1",
+  "privileged": true,
+  "mounts": [ 
+    "source=/dev/ttyUSB0,target=/dev/ttyUSB0,type=bind"
+  ],
+  "workspaceMount": "source=${localWorkspaceFolder},target=/project,type=bind",
+  "workspaceFolder": "/project"
+}
