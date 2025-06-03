@@ -1,6 +1,6 @@
 # micro-ros-mruby
 
-## ROSConJP Proposalの誤記訂正
+## ROSConJP Proposalの誤記訂正(will be removed...)
 
 RubyKiagiTakeout 2021 > RubyKiagiTakeout 2020
 
@@ -28,7 +28,7 @@ TBD...
 This project is licensed under the MIT License.  
 However, it includes submodules/components under different licenses:
 
-- `submodules/foo-lib` : Apache License 2.0
-- `submodules/bar-lib` : GPLv3
+- `components/micro_ros_espidf_component` : Apache License 2.0
+- `components/mruby_component/mruby` : MIT
 
 Please refer to each submodule's LICENSE file for details.
