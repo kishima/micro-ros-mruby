@@ -22,3 +22,13 @@ idf.py build
 
 TBD...
 
+
+## License
+
+This project is licensed under the MIT License.  
+However, it includes submodules/components under different licenses:
+
+- `submodules/foo-lib` : Apache License 2.0
+- `submodules/bar-lib` : GPLv3
+
+Please refer to each submodule's LICENSE file for details.
