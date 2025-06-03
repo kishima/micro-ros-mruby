@@ -1,5 +1,9 @@
 # micro-ros-mruby
 
+## ROSConJP Proposalの誤記訂正
+
+RubyKiagiTakeout 2021 > RubyKiagiTakeout 2020
+
 ## Architecture
 
 ![Architecture](doc/micro-ROS-mruby-arch.png)
