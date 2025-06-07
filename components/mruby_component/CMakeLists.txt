@@ -1,3 +1,7 @@
+# Original file from: https://github.com/mruby-esp32/mruby-esp32/blob/master/components/mruby_component/CMakeLists.txt
+# Copyright (c) 2016 Carson McDonald
+# Licensed under the MIT License
+
 set(MRUBY_DIR "${COMPONENT_DIR}/mruby")
 set(LIBMRUBY_FILE "${COMPONENT_DIR}/mruby/build/esp32/lib/libmruby.a")
 set(MRUBY_CONFIG ${COMPONENT_DIR}/esp32_build_config.rb)

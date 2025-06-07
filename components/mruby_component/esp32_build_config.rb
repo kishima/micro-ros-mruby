@@ -1,3 +1,7 @@
+# Original file from: https://github.com/mruby-esp32/mruby-esp32/blob/master/components/mruby_component/esp32_build_config.rb
+# Copyright (c) 2016 Carson McDonald
+# Licensed under the MIT License
+
 MRuby::Build.new do |conf|
   toolchain :gcc
 
@@ -62,7 +66,7 @@ MRuby::CrossBuild.new('esp32') do |conf|
   conf.gem :core => "mruby-print"
   conf.gem :core => "mruby-compiler"
   conf.gem :github => "mruby-esp32/mruby-io"
-  conf.gem :github => "mruby-esp32/mruby-fileio"
+  #conf.gem :github => "mruby-esp32/mruby-fileio"
   conf.gem :github => "mruby-esp32/mruby-socket"
   
   conf.gem :github => "mruby-esp32/mruby-esp32-system"
