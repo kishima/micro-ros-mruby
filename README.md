@@ -17,7 +17,7 @@ ESP32/ESP32-S3
 Use ESP-IDF v5.4.1.
 
 ```
-idf.py build
+docker run -it --rm -v $PWD:/project buildcontainer-micro-ros-mruby idf.py build
 ```
 
 TBD...
