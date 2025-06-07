@@ -17,4 +17,5 @@ COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 WORKDIR /project
 RUN git config --global --add safe.directory /project
+RUN pip3 install catkin_pkg lark-parser colcon-common-extensions
 
