@@ -5,7 +5,7 @@ set -e
 IDF_VER=v5.4.1
 
 docker build \
-  --build-arg IDF_VER=$IDF_VER \
+  --build-arg IDF_CLONE_BRANCH_OR_TAG=$IDF_VER \
   -t esp-idf-ubuntu20:$IDF_VER \
   -f esp20.04.dockerfile .
 

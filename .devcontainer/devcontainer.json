@@ -1,10 +1,14 @@
 {
   "name": "micro-ros-mruby-dev-container",
-  "image": "buildcontainer-micro-ros-mruby:latest",
+  "image": "micro-ros-docker:latest",
   "privileged": true,
-  // "mounts": [ 
-  //   "source=/dev/ttyUSB0,target=/dev/ttyUSB0,type=bind"
-  // ],
+  "mounts": [ 
+    "source=/dev/ttyACM0,target=/dev/ttyACM0,type=bind"
+  ],
+  "runArgs": [
+    "--group-add=dialout"
+  ],
+  "postStartCommand": "echo 'source /opt/esp/idf/export.sh' >> ~/.bashrc",
   "workspaceMount": "source=${localWorkspaceFolder},target=/project,type=bind",
   "workspaceFolder": "/project"
 }
