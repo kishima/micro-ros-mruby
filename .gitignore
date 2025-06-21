@@ -1,6 +1,7 @@
 .vscode/
 .claude/
 build/
+local/
 sdkconfig.old
 sdkconfig
 CLAUDE.md

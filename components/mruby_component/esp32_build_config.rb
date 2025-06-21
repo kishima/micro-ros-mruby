@@ -37,7 +37,6 @@ MRuby::CrossBuild.new('esp32') do |conf|
 
   conf.cc do |cc|
     cc.include_paths << ENV["COMPONENT_INCLUDES"].split(';')
-
     cc.flags << '-Wno-maybe-uninitialized'
     cc.flags << '-Wno-declaration-after-statement'
     cc.flags << '-Wno-unused-variable'
@@ -68,11 +67,14 @@ MRuby::CrossBuild.new('esp32') do |conf|
   conf.build_mrbtest_lib_only
   conf.disable_cxx_exception
 
-  # Core gems only - minimal configuration for ESP-IDF v5.4.1 compatibility
+  #Core mgem
   conf.gem :core => "mruby-sprintf"
   conf.gem :core => "mruby-compiler"
-  
-  # All ESP32-specific gems disabled due to ESP-IDF v5.4.1 compatibility issues
+
+  #conf.gem :github => "mruby-esp32/mruby-esp32-i2c"
+  conf.gem :github => "kishima/mruby-esp32-i2c", branch: 'support_idf_5.4.1'
+  conf.gem :github => "kishima/mruby-esp32-microros", branch: 'develop'
+
   #conf.gem :github => "mruby-esp32/mruby-io"
   #conf.gem :github => "mruby-esp32/mruby-fileio"
   #conf.gem :github => "mruby-esp32/mruby-socket"

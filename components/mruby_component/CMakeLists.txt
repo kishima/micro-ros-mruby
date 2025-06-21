@@ -8,7 +8,7 @@ set(MRUBY_CONFIG ${COMPONENT_DIR}/esp32_build_config.rb)
 
 idf_component_register(
   INCLUDE_DIRS mruby/include
-  REQUIRES esp_hw_support esp_rom esp_timer driver esp_adc esp_wifi mqtt
+  REQUIRES esp_hw_support esp_rom esp_timer driver esp_adc esp_wifi mqtt micro_ros_espidf_component
 )
 
 add_custom_command(
@@ -21,7 +21,7 @@ add_custom_command(
 
 add_prebuilt_library(
   libmruby ${LIBMRUBY_FILE}
-  PRIV_REQUIRES esp_hw_support esp_rom esp_timer driver esp_adc esp_wifi mqtt
+  PRIV_REQUIRES esp_hw_support esp_rom esp_timer driver esp_adc esp_wifi mqtt micro_ros_espidf_component
 )
 target_link_libraries(${COMPONENT_LIB} INTERFACE libmruby)
 
