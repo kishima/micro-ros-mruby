@@ -8,6 +8,10 @@
   "runArgs": [
     "--group-add=dialout"
   ],
+  "containerEnv": {
+    "LC_ALL": "C.UTF-8",
+    "LANG": "C.UTF-8"
+  },
   "postStartCommand": "echo 'source /opt/esp/idf/export.sh' >> ~/.bashrc",
   "workspaceMount": "source=${localWorkspaceFolder},target=/project,type=bind",
   "workspaceFolder": "/project"
