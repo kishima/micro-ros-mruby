@@ -71,11 +71,10 @@ MRuby::CrossBuild.new('esp32') do |conf|
   conf.gem :core => "mruby-sprintf"
   conf.gem :core => "mruby-compiler"
 
-  #conf.gem :github => "mruby-esp32/mruby-esp32-i2c"
   conf.gem :github => "kishima/mruby-esp32-i2c", branch: 'support_idf_5.4.1'
   conf.gem :github => "kishima/mruby-esp32-microros", branch: 'develop'
+  conf.gem :github => "kishima/mruby-esp32-print", branch: 'main'
 
-  #conf.gem :github => "mruby-esp32/mruby-io"
   #conf.gem :github => "mruby-esp32/mruby-fileio"
   #conf.gem :github => "mruby-esp32/mruby-socket"
   #conf.gem :github => "mruby-esp32/mruby-esp32-system"

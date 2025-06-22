@@ -6,6 +6,8 @@
 #include "freertos/task.h"
 #include "esp_log.h"
 #include "esp_system.h"
+#include "nvs_flash.h"
+#include "esp_littlefs.h"
 
 #include "mruby.h"
 #include "mruby/irep.h"
