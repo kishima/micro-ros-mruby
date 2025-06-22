@@ -14,5 +14,5 @@ docker build \
   --build-arg IDF_TARGET=esp32 \
   --build-arg USER_ID=espidf \
   --build-arg TZ_ARG=Asia/Tokyo \
-  -t micro-ros-docker \
+  -t micro-ros-docker:$IDF_VER \
   -f micro-ros.dockerfile .
