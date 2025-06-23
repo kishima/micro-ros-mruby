@@ -68,16 +68,25 @@ MRuby::CrossBuild.new('esp32') do |conf|
   conf.disable_cxx_exception
 
   #Core mgem
-  conf.gem :core => "mruby-sprintf"
   conf.gem :core => "mruby-compiler"
+  conf.gem :core => "mruby-sprintf"
+  conf.gem :core => "mruby-numeric-ext"
+  conf.gem :core => "mruby-class-ext"
+  conf.gem :core => "mruby-object-ext"
+  conf.gem :core => "mruby-proc-ext"
+  conf.gem :core => "mruby-kernel-ext"
+  conf.gem :core => "mruby-method"
+  conf.gem :core => "mruby-metaprog"
 
   conf.gem :github => "kishima/mruby-esp32-i2c", branch: 'support_idf_5.4.1'
   conf.gem :github => "kishima/mruby-esp32-microros", branch: 'develop'
   conf.gem :github => "kishima/mruby-esp32-print", branch: 'main'
 
+  conf.gem :github => "mruby-esp32/mruby-io"
+  conf.gem :github => "mruby-esp32/mruby-esp32-system"
+
   #conf.gem :github => "mruby-esp32/mruby-fileio"
   #conf.gem :github => "mruby-esp32/mruby-socket"
-  #conf.gem :github => "mruby-esp32/mruby-esp32-system"
   #conf.gem :github => "mruby-esp32/mruby-esp32-wifi"
   #conf.gem :github => "mruby-esp32/mruby-esp32-mqtt"
   #conf.gem :github => "mruby-esp32/mruby-esp32-gpio"
