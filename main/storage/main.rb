@@ -16,12 +16,14 @@ def i2c_read_8bit(m, reg_addr)
   result ? result.bytes[0] : 0
 end
 
+# Wait for network to be ready
+ESP32::System.delay(3000)
+
 # init micro ROS
+ESP32::MicroROS.init
 
 # create Node
-
 # register publisher
-
 
 loop do
   stick_left_x = i2c_read_8bit(i2c, 0x60)
@@ -31,9 +33,14 @@ loop do
   puts "#{stick_left_x},#{stick_left_y},#{stick_right_x},#{stick_right_y}"
 
   #make joy topic
-  #publish topic
+  lx = (stick_left_x - 100) / 100.0
+  ly = (stick_left_y - 100) / 100.0
 
+  #publish topic
+  ESP32::MicroROS.publish( lx, ly )
   #spin
+  ESP32::MicroROS.spin_some(100)
+
   ESP32::System.delay(100)
 end
 

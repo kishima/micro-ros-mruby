@@ -9,6 +9,8 @@
 #include "nvs_flash.h"
 #include "esp_littlefs.h"
 
+#include <uros_network_interfaces.h>
+
 #include "mruby.h"
 #include "mruby/irep.h"
 #include "mruby/compile.h"
@@ -21,7 +23,6 @@
 typedef mrb_value (*mrb_load_func)(mrb_state*, FILE*, mrbc_context*);
 
 #if 0
-
 #include <uros_network_interfaces.h>
 #include <rcl/rcl.h>
 #include <rcl/error_handling.h>
@@ -65,6 +66,7 @@ void micro_ros_task(void * arg)
 
 	// Static Agent IP and port can be used instead of autodisvery.
 	RCCHECK(rmw_uros_options_set_udp_address(CONFIG_MICRO_ROS_AGENT_IP, CONFIG_MICRO_ROS_AGENT_PORT, rmw_options));
+
 	//RCCHECK(rmw_uros_discover_agent(rmw_options));
 #endif
 
@@ -124,7 +126,8 @@ void app_main(void)
             CONFIG_MICRO_ROS_APP_TASK_PRIO,
             NULL);
 }
-#endif
+
+#else
 
 void mruby_task(void *pvParameter)
 {
@@ -168,6 +171,8 @@ void app_main()
 {
   nvs_flash_init();
 
+  ESP_ERROR_CHECK(uros_network_interface_initialize());
+
   esp_vfs_littlefs_conf_t conf = {
     .base_path = "/storage",
     .partition_label = "storage",
@@ -177,3 +182,5 @@ void app_main()
 
   xTaskCreate(&mruby_task, "mruby_task", 16384, NULL, 5, NULL);
 }
+
+#endif
