@@ -1,3 +1,7 @@
+# Original file from: https://github.com/mruby-esp32/mruby-esp32/blob/master/components/mruby_component/esp32_build_config.rb
+# Copyright (c) 2016 Carson McDonald
+# Licensed under the MIT License
+
 MRuby::Build.new do |conf|
   toolchain :gcc
 
@@ -22,7 +26,10 @@ MRuby::Build.new do |conf|
     archiver.command = "ar"
   end
 
-  conf.gembox 'default'
+  # Use minimal gembox instead of default to avoid compatibility issues
+  # conf.gembox 'default'
+  conf.gem :core => "mruby-sprintf"
+  conf.gem :core => "mruby-compiler"
 end
 
 MRuby::CrossBuild.new('esp32') do |conf|
@@ -30,8 +37,9 @@ MRuby::CrossBuild.new('esp32') do |conf|
 
   conf.cc do |cc|
     cc.include_paths << ENV["COMPONENT_INCLUDES"].split(';')
-
     cc.flags << '-Wno-maybe-uninitialized'
+    cc.flags << '-Wno-declaration-after-statement'
+    cc.flags << '-Wno-unused-variable'
     cc.flags << '-mlongcalls'
     cc.flags << '-std=gnu17'
     cc.flags = cc.flags.flatten.collect { |x| x.gsub('-MP', '') }
@@ -59,18 +67,30 @@ MRuby::CrossBuild.new('esp32') do |conf|
   conf.build_mrbtest_lib_only
   conf.disable_cxx_exception
 
-  conf.gem :core => "mruby-print"
+  #Core mgem
   conf.gem :core => "mruby-compiler"
+  conf.gem :core => "mruby-sprintf"
+  conf.gem :core => "mruby-numeric-ext"
+  conf.gem :core => "mruby-class-ext"
+  conf.gem :core => "mruby-object-ext"
+  conf.gem :core => "mruby-proc-ext"
+  conf.gem :core => "mruby-kernel-ext"
+  conf.gem :core => "mruby-method"
+  conf.gem :core => "mruby-metaprog"
+
+  conf.gem :github => "kishima/mruby-esp32-i2c", branch: 'support_idf_5.4.1'
+  conf.gem :github => "kishima/mruby-esp32-microros", branch: 'develop'
+  conf.gem :github => "kishima/mruby-esp32-print", branch: 'main'
+
   conf.gem :github => "mruby-esp32/mruby-io"
-  conf.gem :github => "mruby-esp32/mruby-fileio"
-  conf.gem :github => "mruby-esp32/mruby-socket"
-  
   conf.gem :github => "mruby-esp32/mruby-esp32-system"
-  conf.gem :github => "mruby-esp32/mruby-esp32-wifi"
-  conf.gem :github => "mruby-esp32/mruby-esp32-mqtt"
-  
-  conf.gem :github => "mruby-esp32/mruby-esp32-gpio"
-  conf.gem :github => "mruby-esp32/mruby-esp32-adc"
-  conf.gem :github => "mruby-esp32/mruby-esp32-ledc"
-  conf.gem :github => "mruby-esp32/mruby-esp32-spi"
+
+  #conf.gem :github => "mruby-esp32/mruby-fileio"
+  #conf.gem :github => "mruby-esp32/mruby-socket"
+  #conf.gem :github => "mruby-esp32/mruby-esp32-wifi"
+  #conf.gem :github => "mruby-esp32/mruby-esp32-mqtt"
+  #conf.gem :github => "mruby-esp32/mruby-esp32-gpio"
+  #conf.gem :github => "mruby-esp32/mruby-esp32-adc"
+  #conf.gem :github => "mruby-esp32/mruby-esp32-ledc"
+  #conf.gem :github => "mruby-esp32/mruby-esp32-spi"
 end
